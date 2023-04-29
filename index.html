@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  background-color: #f0f5fe;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: #003f87;
+  text-align: center;
+}
+
+.input-area {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #0059b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #003f87;
+}
+
+.output-area {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+#wordCount {
+  color: #003f87;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #003f87;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-area {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.output-area {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wordCount {
+  color: #003f87;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-area {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.output-area {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .input-area {
+    padding: 10px;
+  }
+  
+  textarea {
+    height: 80px;
+    font-size: 14px;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .container {
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>Word Counter & Text Fixer</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Wordy AI</h1>
+    <div class="input-area">
+      <textarea id="inputText" placeholder="Enter your text here"></textarea>
+      <div class="button-container">
+        <button id="countButton">Count Words</button>
+        <button id="fixButton">Fix</button>
+      </div>
+    </div>
+    <div class="output-area">
+      <p id="wordCount">Word count: 0</p>
+    </div>
+  </div>
+  <script>
+window.addEventListener('DOMContentLoaded', function() {
+  var countButton = document.getElementById('countButton');
+  var fixButton = document.getElementById('fixButton');
+  var inputText = document.getElementById('inputText');
+  var wordCount = document.getElementById('wordCount');
+
+  countButton.addEventListener('click', function() {
+    countWords();
+  });
+
+  fixButton.addEventListener('click', function() {
+    fixText();
+  });
+
+  function countWords() {
+    var text = inputText.value;
+    var words = text.trim().split(/\s+/);
+    var count = words.length;
+    wordCount.textContent = 'Word count: ' + count;
+  }
+
+  function fixText() {
+  var text = inputText.value;
+
+  // Replace applicable words with contractions (case-insensitive)
+  var shortenedText = text.replace(/\b(it is)\b/gi, function(match) {
+    var shortened = "it's";
+    if (match[0].toUpperCase() === match[0]) {
+      shortened = shortened.charAt(0).toUpperCase() + shortened.slice(1);
+    }
+    return shortened;
+  })
+  .replace(/\b(can not)\b/gi, "can't")
+  .replace(/\b(do not)\b/gi, "don't")
+  .replace(/\b(should not)\b/gi, "shouldn't")
+    .replace(/\b(will not)\b/gi, "won't")
+  .replace(/\b(what is)\b/gi, "what's")
+    .replace(/\b(would not)\b/gi, "wouldn't");
+  // Add more patterns here for other contractions
+
+  // Capitalize first letter after periods, exclamation marks, and question marks
+  var capitalizedText = shortenedText.replace(/([.?!]\s+|^)(\w)/g, function(match, punctuation, letter) {
+    return punctuation + letter.toUpperCase();
+  });
+
+  // Replace common text talk or abbreviations with their proper word equivalents
+  var correctedText = capitalizedText.replace(/\b(u)\b/gi, 'you')
+                                     .replace(/\b(r)\b/gi, 'are')
+                                     .replace(/\b(ur)\b/gi, 'your')
+                                     .replace(/\b(ya)\b/gi, 'yeah')
+  
+  .replace(/\b(ppl)\b/gi, 'people')
+  
+  .replace(/\b(wtf)\b/gi, 'what the fuck?')
+  
+  .replace(/\b(outta)\b/gi, 'out of')
+  
+  .replace(/\b(probz)\b/gi, 'probably')
+  
+  .replace(/\b(no probs)\b/gi, 'no problem')
+  
+  .replace(/\b(smth)\b/gi, 'something')
+  
+  .replace(/\b(smh)\b/gi, 'shaking my head')
+  
+  .replace(/\b(lmao)\b/gi, 'laughing my arse off')
+  
+  .replace(/\b(stfu)\b/gi, 'shut the hell up!')
+                                     .replace(/\b(lol)\b/gi, 'laugh out loud')
+  
+  .replace(/\b(walkin')\b/gi, 'walking')
+  
+  .replace(/\b(omg)\b/gi, 'oh my god')
+  
+  .replace(/\b(doggo)\b/gi, 'dog')
+  
+  .replace(/\b(gurl)\b/gi, 'girl')
+  
+  .replace(/\b(boi)\b/gi, 'boy')
+  
+  .replace(/\b(i)\b/gi, 'I')
+  
+  .replace(/\b(arse)\b/gi, 'butt')
+  
+.replace(/\b(fuck)\b/gi, 'flip')
+  
+.replace(/\b(shit)\b/gi, 'turd')
+  
+                                     // Add more patterns here for other corrections
+                                     ;
+
+  inputText.value = correctedText;
+}
+
+  // ... existing code ...
+
+
+
+});
+
+
+
+</script>
+</body>
+</html>
