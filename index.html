@@ -83,9 +83,11 @@ button:hover {
 }
 
 h1 {
-  color: #003f87;
   text-align: center;
   margin-bottom: 30px;
+  background: -webkit-linear-gradient(rgba(41,199,228,255), rgba(14,128,157,255), rgba(1,44,86,255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .input-area {
@@ -174,7 +176,7 @@ textarea {
   }
   
   textarea {
-    height: 80px;
+    height: 350px;
     font-size: 14px;
   }
   
@@ -188,6 +190,39 @@ textarea {
     margin-bottom: 10px;
   }
   
+  h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 75px;
+  background: -webkit-linear-gradient(rgba(41,199,228,255), rgba(14,128,157,255), rgba(1,44,86,255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  
+  #wordCount {
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+  button {
+  background: linear-gradient(to bottom left, rgba(41,199,228,255), rgba(14,128,157,255), rgba(1,44,86,255));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 10px 7px 10px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+  
   .container {
   margin: 0 auto;
   padding: 20px;
@@ -199,6 +234,7 @@ textarea {
 </style>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Wordy AI is more than just an editing tool. Fix mistakes, censor profanities, and even make slang formal!">
   <title>Wordy AI</title>
 <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACSWgT/jV0C/4xgA/+kfQr/+MgF/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF9fXwFGNBENAAAAAI5/JJuOYAH/jl4A/5x6Cv+gewL//sMS/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFIwA/9SMgL/Y0cG/2dNAv8AAAAAil4F/pBcAv+LVAP/mXYL/552Bf//xBD/AAAAAAAAAAAAAAAAAAAAAAAAAACLQxT/llAU/1QyAf9eNwL/ak8H/wAAAACRWAP/jlAC/5FHA/+dagv/pW0B/wAAAAAAAAAAAAAAAJ46Ia9GNAP/AAAAAIQ8Ev+MSBP/XDMD/2EzAP9rUwn/AAAAAAAAAACSNQf/kDIB/6pmBf/4tB3/AAAAAAAAAACVMAf/UjoE/1tBBf8AAAAAezYM/1MyAf9gMgP/YjED/25TCf8AAAAAAAAAAGtFNbOoXgX/qGQB/wAAAAAAAAAAhS0F/3AxB/9pUAb/fmQA/wAAAAAAAAAAoZ2SIk8uAP9PLgD/bFUG/3VaC/4AAAAAiS0C/8F2Dv8AAAAAIxoSA30rBf9/Mwn/glML/49wDf+gfw//AAAAAAAAAAAAAAAATzAD/1AyAf99YAv/ZVQZoQAAAADvmyH/AAAAAAAAAACNSxH/gz0L/5JNDv+gghP/tpYY/wAAAAAAAAAAAAAAAAAAAABQNgD/i2oN/4hrCP8AAAAA76Ef/wAAAAAAAAAAlWAR/6RyFf+uhBj/tZgX/6yZLsMAAAAAAAAAAAAAAABSNwX/mXkR/5l5D/+niRn/AAAAAOunJf8AAAAAAAAAAAAAAACrjCu2uZgg/wAAAAAAAAAAAAAAAAAAAAAAAAAAoIIR/6iIEP+kiRH/uZ0c/wAAAAD9wEr/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAq4sS/7SWE//kwDH/1Lkj/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIZyeSnHUS/6aCEP+uiRH/AAAAALyZHP/11jz/8dMu/7+/fwgAAAAA29aVTgAAAAAAAAAAAAAAAAAAAAAAAAAA5JEW/8ubFP+3lhr/vp4Y/wAAAADGpx3//+U7/+LDbF4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7uRz//b4g//65D/8AAAAAAAAAAP3kPf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/B8AAP4HAADhAwAA4IMAAJBhAACIMQAAhwkAAIOFAACDxQAAg4UAAM+FAAD/DwAA4R8AAOE/AADxvwAA//8AAA==" rel="icon" type="image/x-icon" />
