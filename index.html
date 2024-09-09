@@ -276,10 +276,6 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   function fixText() {
-    var text = inputText.value;
-    var words = text.trim().split(/\s+/);
-    var count = words.length;
-    wordCount.textContent = 'Word count: ' + count;
   var text = inputText.value;
 
   // Replace applicable words with contractions (case-insensitive)
@@ -293,11 +289,10 @@ window.addEventListener('DOMContentLoaded', function() {
   .replace(/\b(can not)\b/gi, "can't")
   .replace(/\b(do not)\b/gi, "don't")
   .replace(/\b(should not)\b/gi, "shouldn't")
-    .replace(/\b(will not)\b/gi, "won't")
+  .replace(/\b(will not)\b/gi, "won't")
   .replace(/\b(what is)\b/gi, "what's")
-    .replace(/\b(would not)\b/gi, "wouldn't");
-  // Add more patterns here for other contractions
-
+  .replace(/\b(would not)\b/gi, "wouldn't");
+  
   // Capitalize first letter after periods, exclamation marks, and question marks
   var capitalizedText = shortenedText.replace(/([.?!]\s+|^)(\w)/g, function(match, punctuation, letter) {
     return punctuation + letter.toUpperCase();
@@ -308,57 +303,48 @@ window.addEventListener('DOMContentLoaded', function() {
                                      .replace(/\b(r)\b/gi, 'are')
                                      .replace(/\b(ur)\b/gi, 'your')
                                      .replace(/\b(ya)\b/gi, 'yeah')
-  
-  .replace(/\b(ppl)\b/gi, 'people')
-  
-  .replace(/\b(wtf)\b/gi, 'what the fuck?')
-  
-  .replace(/\b(outta)\b/gi, 'out of')
-  
-  .replace(/\b(probz)\b/gi, 'probably')
-  
-  .replace(/\b(no probs)\b/gi, 'no problem')
-  
-  .replace(/\b(smth)\b/gi, 'something')
-  
-  .replace(/\b(smh)\b/gi, 'shaking my head')
-  
-  .replace(/\b(lmao)\b/gi, 'laughing my arse off')
-  
-  .replace(/\b(stfu)\b/gi, 'shut the fuck up!')
+                                     .replace(/\b(ppl)\b/gi, 'people')
+                                     .replace(/\b(wtf)\b/gi, 'what the flip?')
+                                     .replace(/\b(outta)\b/gi, 'out of')
+                                     .replace(/\b(probz)\b/gi, 'probably')
+                                     .replace(/\b(no probs)\b/gi, 'no problem')
+                                     .replace(/\b(smth)\b/gi, 'something')
+                                     .replace(/\b(smh)\b/gi, 'shaking my head')
+                                     .replace(/\b(lmao)\b/gi, 'laughing my arse off')
+                                     .replace(/\b(stfu)\b/gi, 'shut the flip up!')
                                      .replace(/\b(lol)\b/gi, 'laugh out loud')
-  
-  .replace(/\b(walkin')\b/gi, 'walking')
-  
-  .replace(/\b(omg)\b/gi, 'oh my god')
-  
-  .replace(/\b(doggo)\b/gi, 'dog')
-  
-  .replace(/\b(gurl)\b/gi, 'girl')
-  
-  .replace(/\b(boi)\b/gi, 'boy')
-  
-  .replace(/\b(i)\b/gi, 'I')
-  
-  .replace(/\b(arse)\b/gi, 'butt')
-  
-.replace(/\b(fuck)\b/gi, 'flip')
-  
-.replace(/\b(shit)\b/gi, 'turd')
+                                     .replace(/\b(walkin')\b/gi, 'walking')
+                                     .replace(/\b(omg)\b/gi, 'oh my god')
+                                     .replace(/\b(doggo)\b/gi, 'dog')
+                                     .replace(/\b(gurl)\b/gi, 'girl')
+                                     .replace(/\b(boi)\b/gi, 'boy')
+                                     .replace(/\b(i)\b/gi, 'I')
+                                     .replace(/\b(arse)\b/gi, 'butt')
+                                     .replace(/\b(fuck)\b/gi, 'flip')
+                                     .replace(/\b(shit)\b/gi, 'turd')
+                                     .replace(/\b(piss)\b/gi, 'pee')
+                                     .replace(/\b(crap)\b/gi, 'poo')
+                                     .replace(/\b(cunt)\b/gi, 'female genitalia')
+                                     .replace(/\b(dick)\b/gi, 'male genitalia');
 
-.replace(/\b(piss)\b/gi, 'pee')
+  // Split text into sentences, determine ending punctuation
+  var sentences = correctedText.split(/(?<=[.!?])\s+/);
 
-.replace(/\b(crap)\b/gi, 'poo')
+  var punctuatedText = sentences.map(function(sentence) {
+    sentence = sentence.trim();
+    if (!/[.!?]$/.test(sentence)) { // If no punctuation at end
+      if (/^(who|what|where|when|how|why|would|could|should)\b/i.test(sentence)) {
+        return sentence + '?'; // Add question mark
+      } else {
+        return sentence + '.'; // Add full stop
+      }
+    }
+    return sentence;
+  }).join(' ');
 
-.replace(/\b(cunt)\b/gi, 'female genitalia')
-
-.replace(/\b(dick)\b/gi, 'male genitalia')
-  
-                                     // Add more patterns here for other corrections
-                                     ;
-
-  inputText.value = correctedText;
+  inputText.value = punctuatedText;
 }
+
 
   // ... existing code ...
 
